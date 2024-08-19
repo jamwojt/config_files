@@ -50,7 +50,7 @@ return {
 				settings = {
 					python = {
 						analysis = {
-							typeCheckingMode = "off",
+							typeCheckingMode = "basic",
 							autoSearchPaths = true,
 							useLibraryCodeForTypes = false,
 							diagnosticMode = "openFilesOnly", -- or 'workspace'
