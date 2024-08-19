@@ -8,9 +8,8 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
-			-- require("mason
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "ruff" },
+				ensure_installed = { "lua_ls", "rust_analyzer", "pyright" },
 			})
 		end,
 	},
@@ -22,34 +21,50 @@ return {
 			local lspCapabilities = vim.lsp.protocol.make_client_capabilities()
 			lspCapabilities.textDocument.completion.completionItem.snippetSupport = true
 
+			-- set up harper for spell checking
+			require("lspconfig").harper_ls.setup({
+				settings = {
+					["harper-ls"] = {
+						linters = {
+							spell_check = true,
+							spelled_numbers = false,
+							an_a = true,
+							sentence_capitalization = false,
+							unclosed_quotes = true,
+							wrong_quotes = false,
+							long_sentences = true,
+							repeated_words = false,
+							spaces = true,
+							matcher = true,
+							correct_number_suffix = true,
+							number_suffix_capitalization = true,
+							multiple_sequential_pronouns = true,
+						},
+					},
+				},
+			})
+
 			-- setup pyright with completion capabilities
 			require("lspconfig").pyright.setup({
 				capabilities = lspCapabilities,
-			})
-
-			-- ruff uses an LSP proxy, therefore it needs to be enabled as if it
-			-- were a LSP. In practice, ruff only provides linter-like diagnostics
-			-- and some code actions, and is not a full LSP yet.
-			require("lspconfig").ruff.setup({
-				-- organize imports disabled, since we are already using `isort` for that
-				-- alternative, this can be enabled to make `organize imports`
-				-- available as code action
 				settings = {
-					organizeImports = false,
+					python = {
+						analysis = {
+							typeCheckingMode = "off",
+							autoSearchPaths = true,
+							useLibraryCodeForTypes = false,
+							diagnosticMode = "openFilesOnly", -- or 'workspace'
+							logLevel = "Hint",
+							autoImportCompletions = true,
+						},
+					},
 				},
-				-- disable ruff as hover provider to avoid conflicts with pyright
-				on_attach = function(client)
-					client.server_capabilities.hoverProvider = false
-				end,
 			})
 		end,
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.pylsp.setup({
 				capabilities = capabilities,
 			})
 
