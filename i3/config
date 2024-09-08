@@ -11,9 +11,9 @@
 
 set $mod Mod4
 # set scrolling to normal
-exec_always --no-startup-id xinput set-prop 13 319 1
+# exec_always --no-startup-id xinput set-prop 13 319 1
 # set clickable touchpad
-exec_always --no-startup-id xinput set-prop 13 "libinput Tapping Enabled" 1
+# exec_always --no-startup-id xinput set-prop 13 "libinput Tapping Enabled" 1
 
 # run network manager applet
 exec_always --no-startup-id nm-applet
@@ -22,6 +22,10 @@ exec_always --no-startup-id blueman-applet
 
 # run adjust monitors script
 exec_always --no-startup-id bash ~/.config/i3/adjust_monitors.sh
+# run script to fix touchpad
+exec_always --no-startup-id bash ~/config_files/i3/make_touchpad_great_again.sh
+# run script for timeout/lock screen stuff
+exec_always --no-startup-id bash ~/config_files/i3/screen_timeout_config.sh
 
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -67,9 +71,11 @@ tiling_drag modifier titlebar
 
 # basic functionality
 bindsym $mod+Return exec alacritty
-bindsym $mod+b exec brave
+bindsym $mod+b exec --no-startup-id brave
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+bindsym $mod+z exec --no-startup-id ~/browser/zen/zen-bin
+bindsym $mod+o exec --no-startup-id obsidian
 
 
 # run flameshot applet

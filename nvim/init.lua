@@ -2,7 +2,7 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
-vim.opt.scrolloff = 16
+vim.opt.scrolloff = 8
 vim.opt.colorcolumn = "88"
 
 -- Bootstrap lazy.nvim

@@ -21,6 +21,8 @@ return {
 			local lspCapabilities = vim.lsp.protocol.make_client_capabilities()
 			lspCapabilities.textDocument.completion.completionItem.snippetSupport = true
 
+            require("lspconfig").rust_analyzer.setup({})
+
 			-- set up harper for spell checking
 			require("lspconfig").harper_ls.setup({
 				settings = {
@@ -44,6 +46,9 @@ return {
 				},
 			})
 
+            -- setup bashls
+            require("lspconfig").bashls.setup({})
+
 			-- setup pyright with completion capabilities
 			require("lspconfig").pyright.setup({
 				capabilities = lspCapabilities,
@@ -52,8 +57,8 @@ return {
 						analysis = {
 							typeCheckingMode = "basic",
 							autoSearchPaths = true,
-							useLibraryCodeForTypes = false,
-							diagnosticMode = "openFilesOnly", -- or 'workspace'
+							useLibraryCodeForTypes = true,
+							diagnosticMode = "workspace", -- or 'openFilesOnly'
 							logLevel = "Hint",
 							autoImportCompletions = true,
 						},

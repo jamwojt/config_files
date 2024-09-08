@@ -23,4 +23,7 @@ return {
 
     -- paste over highlighted text
     vim.keymap.set("x", "<leader>P", '"_dP'),
+
+    -- open markdown preview
+    vim.keymap.set("n", "<leader>mp", ":MarkdownPreviewToggle<CR>")
 }

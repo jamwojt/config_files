@@ -10,10 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-# set scrolling to normal
-exec_always --no-startup-id xinput set-prop 13 319 1
-# set clickable touchpad
-exec_always --no-startup-id xinput set-prop 13 "libinput Tapping Enabled" 1
+
 
 # run network manager applet
 exec_always --no-startup-id nm-applet
@@ -22,6 +19,17 @@ exec_always --no-startup-id blueman-applet
 
 # run adjust monitors script
 exec_always --no-startup-id bash ~/.config/i3/adjust_monitors.sh
+# fix touchpad settings
+exec_always --no-startup-id bash ~/config_files/i3/make_touchpad_great_again.sh
+# # set scrolling to normal
+# exec_always --no-startup-id xinput set-prop 13 319 1
+# # set tappable touchpad
+# exec_always --no-startup-id xinput set-prop 13 348 1
+#
+# # set tappable touchpad for other mouse
+# exec_always --no-startup-id xinput set-prop 15 348 1
+# # set scrolling to normal for other mouse
+# exec_always --no-startup-id xinput set-prop 15 319 1
 
 
 # Font for window titles. Will also be used by the bar unless a different font
