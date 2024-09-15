@@ -5,6 +5,10 @@ vim.cmd("set shiftwidth=4")
 vim.opt.scrolloff = 8
 vim.opt.colorcolumn = "88"
 
+vim.g.lua_host_prog = '~/lua_env/bin/lua'
+vim.g.luarocks_host_prog = '~/lua_env/bin/luarocks'
+-- opts.rocks.enabled = true
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

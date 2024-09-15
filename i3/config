@@ -70,12 +70,10 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # basic functionality
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 bindsym $mod+b exec --no-startup-id brave
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
-bindsym $mod+z exec --no-startup-id ~/browser/zen/zen-bin
-bindsym $mod+o exec --no-startup-id obsidian
 
 
 # run flameshot applet
