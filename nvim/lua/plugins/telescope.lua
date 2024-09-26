@@ -7,6 +7,9 @@ return {
             vim.keymap.set('n', '<Leader>fd', builtin.find_files, {})
             vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
             vim.keymap.set("n", "<Leader>fb", builtin.current_buffer_fuzzy_find, {})
+            vim.keymap.set("n", "<Leader>fp", builtin.diagnostics, {})
+            vim.keymap.set("n", "<Leader>ft", builtin.treesitter, {})
+            vim.keymap.set("n", "<Leader>fr", builtin.registers, {})
         end
     },
     {
