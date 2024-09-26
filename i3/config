@@ -70,7 +70,8 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # basic functionality
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec kitty 
+# --listen-on=unix:@"$(date +%s%N)"
 bindsym $mod+b exec --no-startup-id brave
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
