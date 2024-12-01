@@ -42,7 +42,7 @@ do
     fi
 
     # set wallpaper
-    nitrogen --head=$monitor_index --set-zoom-fill ~/Wallpapers/control_wp.jpg
+    nitrogen --head=$monitor_index --set-zoom-fill ~/Wallpapers/programming.png
     
     # check if this alignment was handled already
     contains_element "$monitor_alignment" "${handled_monitor_alignment_array[@]}"
